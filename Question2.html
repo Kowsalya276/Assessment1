@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+    <style>
+        
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        body{
+            background: white;
+            }
+
+        .demo{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            max-width: 350px;
+            width: 100%;
+            background: none;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .demo h2{
+            text-align: center;
+            margin-bottom: 20px;
+            color: black;
+        }
+
+        .demo .input_field{
+            margin-bottom: 20px;
+        }
+
+        .demo .input_field input[type="text"],
+        .demo text{
+            border: 1px solid #e0e0e0;
+            width: 100%;
+            padding: 10px;
+        }
+        .demo .btn input{
+            border: 0px;
+            margin-top: 15px;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            background: blue;
+            color: black;
+            font-weight: bold;
+        }
+        #error_message{
+ 
+           color: red;
+           font-size: 14px;
+ 
+        }
+
+    </style>
+    <script>
+        
+        function validate(){
+            var username = document.getElementById("username").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var cpassword = document.getElementById("cpassword").value;
+            var error_message = document.getElementById("error_message");
+
+            var text;
+            if((username.length < 3) || (username.length > 25)){
+                text = "Username must be between 3 and 25 characters.";
+                error_message.innerHTML=text;
+                return false;
+            }
+            if(email.length < 6){
+                text = "Please enter your Email Address";
+                error_message.innerHTML=text;
+                return false;
+            }
+            let regex=/^(?!.*\s)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~`!@#$%^&*]).{8,}$/;
+            if (password.length < 8) {
+                text = "Password must has at least 8 characters that include at least 1 lowercase character, 1 uppercase character,1 number and 1 special character in(!@#$%^&*())";
+                error_message.innerHTML=text;
+                return false;
+            }
+            else if (!(/[A-Z]/.test(password))) {
+                text = "Password must has at least 8 characters that include at least 1 lowercase character, 1 uppercase character,1 number and 1 special character in(!@#$%^&*())";
+                error_message.innerHTML=text;
+                return false;
+            }
+           else if (!(/[a-z]/.test(password))) {
+                text = "Password must has at least 8 characters that include at least 1 lowercase character, 1 uppercase character,1 number and 1 special character in(!@#$%^&*())";
+                error_message.innerHTML=text;
+                return false;
+            }
+           else if (!(/[0-9]/.test(password))) {
+                text = "Password must has at least 8 characters that include at least 1 lowercase character, 1 uppercase character,1 number and 1 special character in(!@#$%^&*())";
+                error_message.innerHTML=text;
+                return false;
+            }
+            else if (!(/[!@#$%^*&()]/.test(password))) {
+                text = "Password must has at least 8 characters that include at least 1 lowercase character, 1 uppercase character,1 number and 1 special character in(!@#$%^&*())";
+                error_message.innerHTML=text;
+                return false;
+            }
+            else if ((/[" "]/.test(password))) {
+                text = "Password must has at least 8 characters that include at least 1 lowercase character, 1 uppercase character,1 number and 1 special character in(!@#$%^&*())";
+                error_message.innerHTML=text;
+                return false;
+            }
+            if(cpassword != password){
+                text = "Please enter the password again";
+                error_message.innerHTML=text;
+                return false;
+            }
+            alert("Form Submitted Successfully!");
+            return true;
+        }
+
+
+    </script>
+
+</head>
+
+<body>
+    <div class="demo">
+        <h2> Sign Up </h2>
+        <div id="error_message"></div>
+
+    <form form="myform" onsubmit="return validate();">
+        <div class="input_field">
+            <label for="username"> Username: </label><br>
+            <input type="text" id="username" name=" Username">
+        </div>
+        
+        <div class="input_field">
+            <label for="email"> Email: </label><br>
+            <input type="text" id="email" name="Email">
+        </div>
+
+        <div class="input_field">
+            <label for="password"> Password: </label><br>
+            <input type="text" id="password" name="****">
+        </div>
+
+        <div class="input_field">
+            <label for="cpassword"> Confirm Password: </label><br>
+            <input type="text" id="cpassword" name="****">
+        </div>
+
+        <div class="btn">
+            <input type="submit" value="SIGN UP">
+        </div>
+    </form>
+    </div>
+</body>
+
+</html>
